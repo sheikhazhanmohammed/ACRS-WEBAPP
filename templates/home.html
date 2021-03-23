@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+<h1>Mnemonic Code Converter</h1>
+<hr>
+<h3>Mnemonic</h3>
+<p class="container">
+    Use the form below to generate a new set of mneomonics:
+</p>
+<div class="container">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Generate Entropy</legend>
+            <div class="form-group">
+                {{ form.entropy.label(class="form-control-label")}}
+                <p>Enter a 128 digit entropy or type NA/na to generate a random entropy</p>
+                {{ form.entropy(class="form-control form-control-lg")}}
+            </div>
+            <div class="form-group">
+                {{ form.language.label(class="form-control-label")}}
+                {{ form.language(class="form-control")}}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info")}}
+        </div>
+    </form>   
+</div>
+
+{% endblock content%}

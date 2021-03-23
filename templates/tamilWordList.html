@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="container">
+<h2 class="heading">Tamil Words List</h2>
+<ol>
+    {% for word in tamilWords %}
+    <li>{{word}}</li>
+    {% endfor %}
+</ol>
+</div>
+{% endblock content%}
