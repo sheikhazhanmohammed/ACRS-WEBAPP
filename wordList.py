@@ -137,6 +137,8 @@ def wordGenerator(entropy, language):
                 wordList.append(tamilWordsList[i])
     return wordList, finalList
 
+import random
+
 BinSoln = None
 ExpSoln = None
 
@@ -346,19 +348,22 @@ def applySRFG(mnem_phrase):
                 ans = ans[2:]
                 ans = pad_new(ans,64)
             seed += ans
-    return seed
+    return hex(int(seed, 2))
+
+import ctypes
+import os
 
 def cocktail(data):
 #     print(len(str(data)))
-    data = pad(str(data), 155)
+    data = pad(str(data), 152)
     data = data.encode('utf-8')
-    test = ctypes.CDLL('lib.so')    
+    test = ctypes.CDLL('lib.so')
     test.cocktail.argtypes = [ctypes.c_char_p]
     test.cocktail(data)
     file = open('hash.txt')
     x = file.read().lower()
     file.close()
-#     os.remove('hash.txt')
+    os.remove('hash.txt')
     del test
     return x
                        
@@ -367,13 +372,14 @@ def hmacCocktail(seed):
     k = 0x426974636f696e2073656564
     opad = 0x5c5c5c5c5c5c5c5c5c5c5c5c
     ipad = 0x363636363636363636363636
-    m = int(seed, 16)
-    a1 = k ^ opad
-    a2 =  int(cocktail(k^ipad), 16)
-    a3 = m
-    arg = a1 | a2 | a3
+
+    a1 = str(hex(k ^ opad))[2:]
+    a2 =  str(hex(int(cocktail(hex(k^ipad)), 16)))[2:0]
+    a3 = seed[2:]
+    arg = a1 + a2 + a3
 #     print(arg)
 #     print(m)
+#     print(len(arg))
     hash = cocktail(arg)
 #     print(hash)
     mpk = hex(int(hash[:64], 16))
@@ -394,4 +400,5 @@ def G2R(word_list_indices):
     seed = applySRFG(mnem_phrase)
     #Get private key and chain code
     privKey,cCode = hmacCocktail(seed) 
-    return (hex(int(seed,2)),privKey,cCode)    
+    return seed,privKey,cCode
+    

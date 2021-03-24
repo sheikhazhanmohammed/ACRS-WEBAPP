@@ -1,4 +1,4 @@
-from typing import final
+# from typing import final
 from flask import Flask, render_template, url_for
 from wordList import hindiWordsList, tamilWordsList, wordGenerator, G2R
 from forms import EntropyToWordsAndKeys
