@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h3 class="heading">Entered Entropy/ Randomly Generated Entropy</h3>
+<h3 class="heading">Entered / Randomly Generated Entropy</h3>
 <p class="container"> {{entropy}} </p>
-<h3 class="heading">Generated Words List</h2>
+<h3 class="heading">Word List</h2>
 <div class="container">
     <p>
     {% for word in wordList %}
@@ -13,8 +13,8 @@
 </div>
 <h3 class="heading">Root Seed and Private Keys</h3>
 <ul class="container">
-    <li> Root Seed: {{ rootSeed }}</li>
-    <li> Master Chain Code: {{ masterChainCode }} </li>
-    <li> Master Private Key: {{ masterPrivateKey }} </li>
+    <li class = "list"> Root Seed: <br> <span class = "seed"> {{ rootSeed }} </span></li>
+    <li class = "list">  Master Chain Code: <br> <span class = "keys"> {{ masterPrivateKey }} </span></li>
+    <li class = "list">  Master Private Key: <br> <span class = "keys"> {{ masterChainCode }} </span> </li>
 </ul>
 {% endblock content%}

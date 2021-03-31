@@ -40,6 +40,24 @@ tamilWords = tamilWords.replace('   ', ' ')
 tamilWords = tamilWords.replace('    ', ' ')
 tamilWordsList = tamilWords.split(' ')
 
+
+with codecs.open('./static/EnglishWords.txt', encoding='utf-8') as f:
+    englishWords = f.read()
+englishWords = englishWords.replace('\r',' ')
+englishWords = englishWords.replace('\n',' ')
+englishWords = englishWords.replace('(', ' ')
+englishWords = englishWords.replace(')', ' ')
+englishWords = englishWords.replace('<', ' ')
+englishWords = englishWords.replace('>', ' ')
+englishWords = englishWords.replace('-', ' ')
+englishWords = englishWords.replace('.', ' ')
+englishWords = englishWords.replace(',', ' ')
+englishWords = englishWords.replace('?', ' ')
+englishWords = englishWords.replace('  ', ' ')
+englishWords = englishWords.replace('   ', ' ')
+englishWords = englishWords.replace('    ', ' ')
+englishWordsList = englishWords.split(' ')
+
 hexadecimalToBinaryDictionary = {
     "0": "0000",
     "1": "0001",
@@ -122,8 +140,11 @@ def wordGenerator(entropy, language):
         for i in finalList:
             if(language=='Hindi'):
                 wordList.append(hindiWordsList[i])
-            else:
+            elif language=='Tamil':
                 wordList.append(tamilWordsList[i])
+            else:
+                wordList.append(englishWordsList[i])
+
     else:
         binaryOutput = convertToBinary(entropy)
         checksum = generateChecksum(binaryOutput)
@@ -133,8 +154,10 @@ def wordGenerator(entropy, language):
         for i in finalList:
             if(language=='Hindi'):
                 wordList.append(hindiWordsList[i])
-            else:
+            elif language=='Tamil':
                 wordList.append(tamilWordsList[i])
+            else:
+                wordList.append(englishWordsList[i])
     return wordList, finalList
 
 import random

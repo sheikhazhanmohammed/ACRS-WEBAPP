@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+<h2 class="heading">English Words List</h2>
+<ol>
+    {% for word in englishWords %}
+    <li>{{word}}</li>
+    {% endfor %}
+</ol>
+</div> 
+{% endblock content%}

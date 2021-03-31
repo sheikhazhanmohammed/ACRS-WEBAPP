@@ -2,4 +2,28 @@
     padding-left: 2cm;
     padding-top: 2cm;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    color: rgb(255,0,255);
+}
+
+.keys{
+
+	font-style: italic;
+	color: rgb(169,169,169);
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.seed{
+
+	font-size: small;
+	font-style: italic;
+	color: rgb(169,169,169);
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.list{
+	font-size: large;
+	color: rbg(255, 255, 255);
+	font-weight: bold;
+	padding-left: 0;
+
 }

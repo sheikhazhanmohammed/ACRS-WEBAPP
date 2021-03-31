@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired, Length
 
 class EntropyToWordsAndKeys(FlaskForm):
     entropy = StringField('Entropy', validators=[DataRequired(), Length(min=2, max=128)])
-    language = RadioField('Language', choices=['Hindi','Tamil'] ,validators=[DataRequired(), Length(min=5, max=5)])
+    language = RadioField('Language', choices=['Hindi','Tamil','English'] ,validators=[DataRequired(), Length(min=5, max=7)])
     submit = SubmitField('Generate')
 
 
